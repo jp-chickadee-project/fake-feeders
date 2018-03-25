@@ -11,7 +11,7 @@ setInterval(() => {
   const visit = {
     bandCombo: 'g0/Y#', 
     feederID: 'CLIF',
-    isSynced: 1, 
+    isSynced: 0, 
     mass: 108, 
     rfid: '011016A269', 
     temperature: 444, 
