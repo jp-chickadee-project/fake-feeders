@@ -1,17 +1,22 @@
 
-import request from 'request';
+import request from 'request-promise';
 
-request.post('http://euclid.nmu.edu:11223/api/visits/', {
+// grab a list of all feeders
+// grab a list of all birds
+// grab the most recent visit
+// submit fake visits filling in latest visit to now
+
+request.post('http://euclid.nmu.edu:18155/api/visits/', {
   form: {
-    "rfid": "011016A269",
-    "feederID": "CLIF",
-    "visitTimestamp": 1521420449,
-    "temperature": 44,
-    "mass": 108,
-    "bandCombo": "#a0/V"
-  }
-}, (error, status, body) => {
-  console.log(error);
-  console.log(status);
-  console.log(body);
-});
+    bandCombo: 'g0/Y#', 
+    feederID: 'CLIF',
+    isSynced: 1, 
+    mass: 108, 
+    rfid: '011016A269', 
+    temperature: 444, 
+    visitTimestamp: Date.now() / 1000
+  },
+})
+  .then((result) => {
+    console.log(result);
+  });
