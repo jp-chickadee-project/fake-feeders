@@ -1,11 +1,6 @@
 
 import request from 'request-promise';
 
-// grab a list of all feeders
-// grab a list of all birds
-// grab the most recent visit
-// submit fake visits filling in latest visit to now
-
 setInterval(() => {
 
   const visit = {
@@ -23,7 +18,7 @@ setInterval(() => {
     console.log(result);
   });
 
-}, 5000);
+}, 2000);
 
 
 class Api {
