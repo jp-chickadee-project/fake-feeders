@@ -18,8 +18,14 @@ setInterval(() => {
     console.log(result);
   });
 
-}, 2000);
+}, determineHowLongToWait());
 
+
+function determineHowLongToWait() {
+  const baseline = 1000;
+  const random = Math.random() * 3000;
+  return baseline + random;
+}
 
 class Api {
 
