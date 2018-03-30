@@ -1,8 +1,16 @@
 
 import request from 'request-promise';
 
-setInterval(() => {
+start();
 
+function start() {
+  setTimeout(() => {
+    submit();
+    start();
+  }, determineHowLongToWait());
+}
+
+function submit() {
   const visit = {
     bandCombo: 'g0/Y#', 
     feederID: 'CLIF',
@@ -12,19 +20,19 @@ setInterval(() => {
     temperature: 444, 
     visitTimestamp: Date.now() / 1000
   }
-
   Api.submitVisit(visit)
   .then((result) => {
     console.log(result);
   });
-
-}, determineHowLongToWait());
+}
 
 
 function determineHowLongToWait() {
-  const baseline = 1000;
-  const random = Math.random() * 3000;
-  return baseline + random;
+  const baseline = 3000;
+  const random = Math.random() * 7000;
+  const delay = baseline + random;
+  console.log(delay)
+  return delay;
 }
 
 class Api {
