@@ -1,5 +1,8 @@
 
 import request from 'request-promise';
+import * as _ from 'lodash';
+
+import visits from './dataset';
 
 start();
 
@@ -11,14 +14,10 @@ function start() {
 }
 
 function submit() {
-  const visit = {
-    bandCombo: 'g0/Y#', 
-    feederID: 'CLIF',
-    mass: 108, 
-    rfid: '011016A269', 
-    temperature: 444, 
-    visitTimestamp: Date.now() / 1000
-  }
+  const i = _.random(0, visits.length);
+  const visit = visits[i];
+  visit.visitTimestamp = Date.now() / 1000;
+  console.log(`timestamp=${visit.visitTimestamp} feeder=${visit.feederID} bird=${visit.rfid}`);
   Api.submitVisit(visit)
   .then((result) => {
     console.log(result);
